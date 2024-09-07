@@ -1,0 +1,1 @@
+python /nethome/hhwang/hhwang/kagaku/M2_BPE_full_data.py
