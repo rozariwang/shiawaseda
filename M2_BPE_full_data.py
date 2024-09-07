@@ -15,7 +15,6 @@ import time
 from transformers import AutoTokenizer
 
 from tqdm import tqdm
-import torch
 from mamba_ssm.modules.mamba2 import Mamba2
 from mamba_ssm.models.config_mamba import MambaConfig
 from mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel
