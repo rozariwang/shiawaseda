@@ -2,6 +2,10 @@ import sys
 # Correct the path to the cloned 'mamba' repository on your cluster
 # sys.path.append('/hhwang/kagaku/mamba')
 
+import setuptools
+
+print(setuptools.__version__)
+
 # Data Loading and Preprocessing
 import torch
 import torch.nn as nn
