@@ -24,6 +24,7 @@ RUN python3 -c "import torch; print('CUDA Available:', torch.cuda.is_available()
 
 # Install Python dependencies
 RUN python3 -m pip install \
+    torch \
     accelerate \
     wandb \
     optuna \
