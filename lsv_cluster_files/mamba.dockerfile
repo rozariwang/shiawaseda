@@ -24,9 +24,6 @@ RUN apt-get update && apt-get install -y \
 RUN python -m pip install --upgrade pip "setuptools<71"
 RUN pip install torch
 
-#check CUDA availability
-RUN python3 -c "import torch; print('CUDA Available:', torch.cuda.is_available()); print('CUDA Device Count:', torch.cuda.device_count() if torch.cuda.is_available() else 'CUDA not available'); print('CUDA Device Name:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'No CUDA Devices Found')"
-
 # Install Python dependencies
 RUN python3 -m pip install \
     accelerate \
