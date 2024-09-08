@@ -16,6 +16,9 @@ RUN apt-get update && apt-get install -y \
     tmux \
     && rm -rf /var/lib/apt/lists/*
 
+
+RUN python -m pip uninstall setuptools pkg_resources
+
 # Explicitly install Python packages and check CUDA
 RUN python -m pip install --upgrade pip "setuptools<71"
 RUN python -m pip install torch
