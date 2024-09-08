@@ -9,7 +9,7 @@ output                  = /data/users/hhwang/logs/output_$(ClusterId).$(Year)_$(
 error                   = /data/users/hhwang/logs/error_$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).log
 log                     = /data/users/hhwang/logs/log_$(ClusterId).$(Year)_$(Month)_$(Day)_$(SUBMIT_TIME).log
 request_CPUs            = 1
-request_memory          = 60G
+request_memory          = 40G
 request_GPUs            = 1
 requirements            = (GPUs_GlobalMemoryMb >= 40000) && (machine == "cl18lx.lsv.uni-saarland.de")
 #+JobFlavour             = "workday"
