@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
 #RUN python -m pip install --upgrade pip "setuptools<71"
 #RUN python -m pip install torch
 
-RUN python3 -m pip install --upgrade pip "setuptools==74.1.2"
+RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 RUN python3 -m pip install causal-conv1d>=1.4.0
 RUN python3 -m pip install torch
 
