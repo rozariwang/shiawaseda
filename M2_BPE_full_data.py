@@ -178,7 +178,7 @@ val_loader = DataLoader(val_dataset, batch_size=64, shuffle=False, collate_fn=co
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, collate_fn=collate_batch)
 
 
-num_epochs = 1
+num_epochs = 2
 train(model, train_loader, val_loader, optimizer, criterion, device, num_epochs)
 
 
