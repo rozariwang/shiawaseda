@@ -5,7 +5,7 @@ FROM nvcr.io/nvidia/pytorch:22.02-py3
 ENV CUDA_HOME=/usr/local/cuda
 
 # Install additional programs
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y cuda-toolkit-12-0\
     build-essential \
     git \
     htop \
@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y \
     vim \
     tmux \
     && rm -rf /var/lib/apt/lists/*
-
 
 # Explicitly install Python packages and check CUDA
 #RUN python -m pip install --upgrade pip "setuptools<71"
