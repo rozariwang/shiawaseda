@@ -1,5 +1,5 @@
 # For LSV A100s server
-FROM nvcr.io/nvidia/pytorch:22.02-py3
+FROM nvcr.io/nvidia/pytorch:23.02-py3
 
 # Add NVIDIA package repository
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
