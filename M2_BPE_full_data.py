@@ -19,9 +19,9 @@ import time
 from transformers import AutoTokenizer
 
 from tqdm import tqdm
-from mamba_ssm.modules.mamba2 import Mamba2
-from mamba_ssm.models.config_mamba import MambaConfig
-from mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel
+from mamba.mamba_ssm.modules.mamba2 import Mamba2
+from mamba.mamba_ssm.models.config_mamba import MambaConfig
+from mamba.mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel
 import pandas as pd
 
 
