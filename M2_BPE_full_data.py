@@ -1,6 +1,12 @@
-import sys
 # Correct the path to the cloned 'mamba' repository on your cluster
 # sys.path.append('/hhwang/kagaku/mamba')
+
+import sys
+#import os
+
+# Add the parent directory to the path
+#sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append('/hhwang/shiawaseda')
 
 import setuptools
 
