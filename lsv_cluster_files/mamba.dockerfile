@@ -1,16 +1,16 @@
-# For LSV A100s server
+# For LSV A100 server
 FROM nvcr.io/nvidia/pytorch:23.02-py3
 
 # Add NVIDIA package repository
-RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 RUN echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" > /etc/apt/sources.list.d/cuda.list
 
-# Update and install CUDA 12.x
+# Update and install CUDA 11.8
 RUN apt-get update && apt-get install -y cuda-11-8
 
-# Set path to CUDA
-ENV PATH=/usr/local/cuda-12.0/bin${PATH:+:${PATH}}
-ENV LD_LIBRARY_PATH=/usr/local/cuda-12.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# Set path to CUDA 11.8
+ENV PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
+ENV LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # Install additional programs
 RUN apt-get update && apt-get install -y \
