@@ -6,7 +6,7 @@ RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/
 RUN echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" > /etc/apt/sources.list.d/cuda.list
 
 # Update and install CUDA 12.x
-RUN apt-get update && apt-get install -y cuda-12-0
+RUN apt-get update && apt-get install -y cuda-11-8
 
 # Set path to CUDA
 ENV PATH=/usr/local/cuda-12.0/bin${PATH:+:${PATH}}
