@@ -1,6 +1,9 @@
 # For LSV A100 server
 FROM nvcr.io/nvidia/pytorch:23.02-py3
 
+# Avoid debconf and tzdata hanging on user input
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Add NVIDIA package repository
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 RUN echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" > /etc/apt/sources.list.d/cuda.list
