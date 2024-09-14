@@ -1,22 +1,11 @@
-# For LSV A100 server
-FROM nvcr.io/nvidia/pytorch:23.02-py3
+# For LSV A100s server
+FROM nvcr.io/nvidia/pytorch:22.02-py3
 
-# Avoid debconf and tzdata hanging on user input
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Add NVIDIA package repository
-RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
-RUN echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" > /etc/apt/sources.list.d/cuda.list
-
-# Update and install CUDA 11.8
-RUN apt-get update && apt-get install -y cuda-11-8
-
-# Set path to CUDA 11.8
-ENV PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
-ENV LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# Set path to CUDA
+ENV CUDA_HOME=/usr/local/cuda
 
 # Install additional programs
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y\
     build-essential \
     git \
     htop \
@@ -27,15 +16,18 @@ RUN apt-get update && apt-get install -y \
     tmux \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python packages
+# Explicitly install Python packages and check CUDA
+#RUN python -m pip install --upgrade pip "setuptools<71"
+#RUN python -m pip install torch
+
 RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
+
 RUN python3 -m pip install torch
 
-# Clone and install causal-conv1d
 RUN git clone https://github.com/rozariwang/causal-conv1d.git /opt/causal-conv1d
-RUN cd /opt/causal-conv1d && pip install .
+RUN cd /opt/causal-conv1d && pip install . --no-cache-dir
 
-# Install other Python dependencies
+# Install Python dependencies
 RUN python3 -m pip install \
     accelerate \
     wandb \
@@ -48,12 +40,18 @@ RUN python3 -m pip install \
     rdkit-pypi \
     datasets \
     ninja
+    # \
+    #causal-conv1d
 
-# Clone and install mamba
+#RUN python3 -m pip install -v mamba-ssm
+
+# Clone the mamba repository
 RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
-RUN cd /opt/mamba && pip install .
 
-# Specify a new user
+# Install mamba from the cloned repository
+RUN cd /opt/mamba && pip install . --no-cache-dir
+
+# Specify a new user (USER_NAME and USER_UID are specified via --build-arg)
 ARG USER_UID
 ARG USER_NAME
 ENV USER_GID=$USER_UID
