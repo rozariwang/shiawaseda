@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y\
 
 RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 
-RUN python3 -m pip install torch==2.1.0+cu121
+RUN python3 -m pip install torch==2.2.0+cu122
 
 RUN git clone https://github.com/rozariwang/causal-conv1d.git /opt/causal-conv1d
 RUN cd /opt/causal-conv1d && pip install . --no-cache-dir
