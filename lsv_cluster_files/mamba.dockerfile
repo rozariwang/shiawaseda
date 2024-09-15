@@ -47,10 +47,11 @@ RUN python3 -m pip install \
 
 # Clone the mamba repository
 #RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
+RUN git clone https://github.com/rozariwang/mamba.git /opt/mamba
 # Install mamba from the cloned repository
-#RUN cd /opt/mamba && pip install . --no-cache-dir --no-build-isolation
+RUN cd /opt/mamba && pip install . --no-cache-dir --no-build-isolation
 
-RUN python3 -m pip install mamba-ssm --no-cache-dir --no-build-isolation
+#RUN python3 -m pip install mamba-ssm --no-cache-dir --no-build-isolation
 
 # Specify a new user (USER_NAME and USER_UID are specified via --build-arg)
 ARG USER_UID
