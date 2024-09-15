@@ -25,7 +25,7 @@ RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 RUN python3 -m pip install torch==2.2.0
 
 RUN git clone https://github.com/rozariwang/causal-conv1d.git /opt/causal-conv1d
-RUN cd /opt/causal-conv1d && pip install . --no-cache-dir
+RUN cd /opt/causal-conv1d && pip install . --no-cache-dir --no-build-isolation
 
 # Install Python dependencies
 RUN python3 -m pip install \
@@ -49,7 +49,7 @@ RUN python3 -m pip install \
 RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 
 # Install mamba from the cloned repository
-RUN cd /opt/mamba && pip install . --no-cache-dir
+RUN cd /opt/mamba && pip install . --no-cache-dir --no-build-isolation
 
 # Specify a new user (USER_NAME and USER_UID are specified via --build-arg)
 ARG USER_UID
