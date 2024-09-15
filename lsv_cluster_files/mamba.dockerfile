@@ -53,6 +53,9 @@ RUN cd /opt/mamba && pip install -v . --no-cache-dir --no-build-isolation
 
 #RUN python3 -m pip install mamba-ssm --no-cache-dir --no-build-isolation
 
+# Uninstall and reinstall mamba_ssm
+RUN pip uninstall -y mamba_ssm && pip install mamba_ssm --no-cache-dir
+
 # Specify a new user (USER_NAME and USER_UID are specified via --build-arg)
 ARG USER_UID
 ARG USER_NAME
