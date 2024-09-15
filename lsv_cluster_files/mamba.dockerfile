@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y\
 
 RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 
-RUN python3 -m pip install torch==2.2.0
+RUN python3 -m pip install torch
 
 RUN git clone https://github.com/rozariwang/causal-conv1d.git /opt/causal-conv1d
 RUN cd /opt/causal-conv1d && pip install . --no-cache-dir --no-build-isolation
@@ -46,10 +46,11 @@ RUN python3 -m pip install \
 #RUN python3 -m pip install -v mamba-ssm
 
 # Clone the mamba repository
-RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
-
+#RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 # Install mamba from the cloned repository
-RUN cd /opt/mamba && pip install . --no-cache-dir --no-build-isolation
+#RUN cd /opt/mamba && pip install . --no-cache-dir --no-build-isolation
+
+RUN python3 -m pip install mamba-ssm --no-cache-dir --no-build-isolation
 
 # Specify a new user (USER_NAME and USER_UID are specified via --build-arg)
 ARG USER_UID
