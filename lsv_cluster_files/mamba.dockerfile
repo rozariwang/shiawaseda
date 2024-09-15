@@ -49,7 +49,7 @@ RUN python3 -m pip install \
 #RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 RUN git clone https://github.com/rozariwang/mamba.git /opt/mamba
 # Install mamba from the cloned repository
-RUN cd /opt/mamba && pip install . --no-cache-dir --no-build-isolation
+RUN cd /opt/mamba && pip install -v . --no-cache-dir --no-build-isolation
 
 #RUN python3 -m pip install mamba-ssm --no-cache-dir --no-build-isolation
 
