@@ -5,7 +5,7 @@ FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 ENV CUDA_HOME=/usr/local/cuda
 
 # Install additional programs
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y\
     build-essential \
     git \
     htop \
@@ -14,8 +14,11 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     vim \
     tmux \
-    python3 \
-    python3-pip \
+    python3.9 \
+    python3.9-dev \
+    python3.9-venv\
+    python3-pip\
+    python3-wheel\
     && rm -rf /var/lib/apt/lists/*
 
 # Explicitly install Python packages and check CUDA
