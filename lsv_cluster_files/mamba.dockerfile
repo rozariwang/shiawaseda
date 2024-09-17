@@ -31,6 +31,8 @@ RUN apt-get update && apt-get install -y\
     nvidia-utils-450 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN nvidia-smi
+
 # Explicitly install Python packages and check CUDA
 #RUN python -m pip install --upgrade pip "setuptools<71"
 #RUN python -m pip install torch
