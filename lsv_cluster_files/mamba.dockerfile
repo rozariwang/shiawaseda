@@ -6,11 +6,12 @@ FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 # Set path to CUDA
 ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install additional programs
-RUN apt-get update && apt-get install -y\
+RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     htop \
@@ -21,9 +22,12 @@ RUN apt-get update && apt-get install -y\
     tmux \
     python3.9 \
     python3.9-dev \
-    python3.9-venv\
-    python3-pip\
-    python3-wheel\
+    python3.9-venv \
+    python3-pip \
+    python3-wheel \
+    cuda-command-line-tools-11-0 \
+    cuda-cudart-dev-11-0 \
+    cuda-cudart-11-0 \
     nvidia-utils-450 \
     && rm -rf /var/lib/apt/lists/*
 
