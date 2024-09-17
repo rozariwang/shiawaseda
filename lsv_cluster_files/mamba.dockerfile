@@ -8,6 +8,7 @@ ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=$CUDA_HOME/bin:$PATH
 
 RUN nvcc --version
+RUN ldconfig -p | grep cuda || echo "CUDA libraries not found"
 #RUN nvidia-smi
 
 ENV DEBIAN_FRONTEND=noninteractive
