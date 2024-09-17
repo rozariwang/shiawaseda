@@ -2,11 +2,12 @@
 FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 #FROM nvcr.io/nvidia/pytorch:20.09-py3
 #docker run --gpus all nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04 nvidia-smi
-RUN nvidia-smi
 
 # Set path to CUDA
 ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=$CUDA_HOME/bin:$PATH
+
+RUN nvidia-smi
 
 ENV DEBIAN_FRONTEND=noninteractive
 
