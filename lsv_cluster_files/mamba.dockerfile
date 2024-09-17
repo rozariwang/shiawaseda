@@ -8,7 +8,7 @@ ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=$CUDA_HOME/bin:$PATH
 
 RUN nvcc --version
-RUN nvidia-smi
+#RUN nvidia-smi
 
 ENV DEBIAN_FRONTEND=noninteractive
 
