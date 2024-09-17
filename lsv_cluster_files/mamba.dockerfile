@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y\
     python3.9-venv\
     python3-pip\
     python3-wheel\
+    nvidia-utils-450 \
     && rm -rf /var/lib/apt/lists/*
 
 # Explicitly install Python packages and check CUDA
