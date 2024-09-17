@@ -7,10 +7,6 @@ FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=$CUDA_HOME/bin:$PATH
 
-RUN nvcc --version
-RUN ldconfig -p | grep cuda || echo "CUDA libraries not found"
-#RUN nvidia-smi
-
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install additional programs
@@ -31,7 +27,9 @@ RUN apt-get update && apt-get install -y\
     nvidia-utils-450 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN nvidia-smi
+RUN nvcc --version || echo "nvcc not found"
+RUN ldconfig -p | grep cuda || echo "CUDA libraries not found"
+RUN nvidia-smi || echo "nvidia-smi not found"
 
 # Explicitly install Python packages and check CUDA
 #RUN python -m pip install --upgrade pip "setuptools<71"
