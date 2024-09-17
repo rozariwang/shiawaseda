@@ -1,5 +1,5 @@
 # For LSV A100s server
-FROM nvidia/cuda:11.1.1-cudnn8-runtime
+FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 
 # Set path to CUDA
 ENV CUDA_HOME=/usr/local/cuda
