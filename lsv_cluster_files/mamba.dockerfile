@@ -1,11 +1,11 @@
 # For LSV A100s server
-#FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
-FROM nvcr.io/nvidia/pytorch:20.09-py3
+FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
+#FROM nvcr.io/nvidia/pytorch:20.09-py3
 # Set path to CUDA
 ENV CUDA_HOME=/usr/local/cuda
 
 # Install additional programs
-RUN apt-get update && apt-get install -y\
+RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     htop \
@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y\
     ca-certificates \
     vim \
     tmux \
+    python3 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Explicitly install Python packages and check CUDA
