@@ -1,6 +1,6 @@
 # For LSV A100s server
-FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
-
+#FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
+FROM nvcr.io/nvidia/pytorch:20.09-py3
 # Set path to CUDA
 ENV CUDA_HOME=/usr/local/cuda
 
