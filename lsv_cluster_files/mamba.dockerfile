@@ -7,6 +7,7 @@ FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=$CUDA_HOME/bin:$PATH
 
+RUN nvcc --version
 RUN nvidia-smi
 
 ENV DEBIAN_FRONTEND=noninteractive
