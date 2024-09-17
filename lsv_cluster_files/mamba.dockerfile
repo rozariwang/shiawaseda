@@ -33,6 +33,10 @@ RUN python3 -m pip install torch
 
 RUN git clone https://github.com/Dao-AILab/causal-conv1d.git /opt/causal-conv1d
 #RUN git clone https://github.com/rozariwang/causal-conv1d.git /opt/causal-conv1d
+
+# Install the missing packaging library
+RUN python3 -m pip install packaging
+
 RUN cd /opt/causal-conv1d && pip install -v . --no-cache-dir --no-build-isolation 
 
 # Install Python dependencies
