@@ -27,9 +27,9 @@ RUN apt-get update && apt-get install -y \
     python3.10-venv \
     python3-pip \
     python3-wheel \
-    cuda-command-line-tools-12-2 \
-    cuda-cudart-dev-12-2 \
-    cuda-cudart-12-2 \
+    cuda-command-line-tools-12-1 \
+    cuda-cudart-dev-12-1 \
+    cuda-cudart-12-1 \
     nvidia-utils-450 \
     && rm -rf /var/lib/apt/lists/*
 
@@ -39,6 +39,8 @@ RUN nvidia-smi || echo "nvidia-smi not found"
 
 # Upgrade pip and install setuptools and wheel
 RUN pip3 install --upgrade pip setuptools wheel
+
+RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 
 # Install Python dependencies
 RUN pip3 install torch==2.4.0
