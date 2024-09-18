@@ -1,1 +1,1 @@
-nvidia-smi
+python /nethome/hhwang/hhwang/shiawaseda/nvidia_smi.py
