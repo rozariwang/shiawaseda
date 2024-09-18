@@ -42,7 +42,8 @@ RUN pip3 install --upgrade pip setuptools wheel
 
 RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 
-RUN python3 -m pip install torch
+# Install specific version of PyTorch
+RUN pip3 install torch==2.2
 
 RUN git clone https://github.com/Dao-AILab/causal-conv1d.git /opt/causal-conv1d
 #RUN git clone https://github.com/rozariwang/causal-conv1d.git /opt/causal-conv1d
