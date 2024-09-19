@@ -9,8 +9,8 @@ ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Add deadsnakes PPA for newer Python versions
-#RUN apt-get update && apt-get install -y software-properties-common
-#RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
 
 # Install additional programs including Python 3.10
 RUN apt-get update && apt-get install -y \
