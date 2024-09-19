@@ -55,8 +55,8 @@ RUN python3 -m pip install packaging
 #RUN cd /opt/causal-conv1d && pip3 install -v . --no-cache-dir --no-build-isolation 
 
 # Clone and install mamba repository
-#RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
-#RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
+RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
+RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
 
 
 RUN python3 -m pip install \
@@ -72,13 +72,13 @@ RUN python3 -m pip install \
     datasets \
     ninja
 
-# Clone the repository
-#RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
+RUN pip install --no-cache-dir \
+    triton==2.2.0 \
+    causal_conv1d \
+    tqdm \
+    torch torchvision torchaudio \
+    einops
 
-# Change to the cloned directory
-#RUN cd /opt/mamba && \
-    # Install the package, here '--no-cache-dir' avoids caching to ensure fresh installation
-    #pip install . --no-cache-dir
 
 # Uninstall and Reinstall mamba-ssm with no cache
 #RUN pip3 uninstall mamba-ssm -y
@@ -88,12 +88,6 @@ RUN pip3 install mamba-ssm --no-build-isolation
 RUN pip3 install mamba-ssm[causal-conv1d] --no-cache-dir --no-build-isolation
 RUN pip3 install mamba-ssm[dev] --no-build-isolation
 
-RUN pip install --no-cache-dir \
-    triton==2.2.0 \
-    causal_conv1d \
-    tqdm \
-    torch torchvision torchaudio \
-    einops
 
 # Create a new user with specified USER_UID and USER_NAME
 ARG USER_UID
