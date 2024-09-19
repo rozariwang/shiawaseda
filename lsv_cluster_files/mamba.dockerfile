@@ -81,8 +81,8 @@ RUN cd /opt/mamba && \
     pip install . --no-cache-dir
 
 # Uninstall and Reinstall mamba-ssm with no cache
-RUN pip3 uninstall mamba-ssm -y
-RUN pip3 install mamba-ssm --no-cache-dir
+#RUN pip3 uninstall mamba-ssm -y
+#RUN pip3 install mamba-ssm --no-cache-dir
 # Install mamba-ssm with its dependencies
 RUN pip3 install mamba-ssm[causal-conv1d] --no-cache-dir --no-build-isolation
 
