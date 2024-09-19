@@ -43,7 +43,7 @@ RUN pip3 install --upgrade pip setuptools wheel
 RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 
 # Install specific versions of PyTorch and CUDA that are compatible with mamba-ssm
-RUN pip3 install torch==1.12.0 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 install torch
 
 # Optionally install development dependencies if needed
 # RUN pip3 install mamba-ssm[dev] --no-cache-dir --no-build-isolation
@@ -73,18 +73,20 @@ RUN python3 -m pip install \
     ninja
 
 # Clone the repository
-RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
+#RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 
 # Change to the cloned directory
-RUN cd /opt/mamba && \
+#RUN cd /opt/mamba && \
     # Install the package, here '--no-cache-dir' avoids caching to ensure fresh installation
-    pip install . --no-cache-dir
+    #pip install . --no-cache-dir
 
 # Uninstall and Reinstall mamba-ssm with no cache
 #RUN pip3 uninstall mamba-ssm -y
 #RUN pip3 install mamba-ssm --no-cache-dir
 # Install mamba-ssm with its dependencies
+RUN pip3 install mamba-ssm --no-build-isolation
 RUN pip3 install mamba-ssm[causal-conv1d] --no-cache-dir --no-build-isolation
+RUN pip3 install mamba-ssm[dev] --no-build-isolation
 
 # Create a new user with specified USER_UID and USER_NAME
 ARG USER_UID
