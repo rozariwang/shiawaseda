@@ -1,5 +1,5 @@
 # For LSV A100s server
-FROM nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
+FROM nvidia/cuda:12.4.0-devel-ubuntu22.04
 
 # Set path to CUDA
 ENV CUDA_HOME=/usr/local/cuda
