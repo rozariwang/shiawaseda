@@ -72,9 +72,13 @@ RUN python3 -m pip install \
     datasets \
     ninja
 
-# Clone and install mamba repository
+# Clone the repository
 RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
-RUN cd /opt/mamba && pip3 install -v . --no-cache-dir --no-build-isolation
+
+# Change to the cloned directory
+RUN cd /opt/mamba && \
+    # Install the package, here '--no-cache-dir' avoids caching to ensure fresh installation
+    pip install . --no-cache-dir
 
 # Uninstall and Reinstall mamba-ssm with no cache
 RUN pip3 uninstall mamba-ssm -y
