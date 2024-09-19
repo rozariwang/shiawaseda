@@ -9,8 +9,8 @@ ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Add deadsnakes PPA for newer Python versions
-RUN apt-get update && apt-get install -y software-properties-common
-RUN add-apt-repository ppa:deadsnakes/ppa
+#RUN apt-get update && apt-get install -y software-properties-common
+#RUN add-apt-repository ppa:deadsnakes/ppa
 
 # Install additional programs including Python 3.10
 RUN apt-get update && apt-get install -y \
@@ -55,8 +55,8 @@ RUN python3 -m pip install packaging
 #RUN cd /opt/causal-conv1d && pip3 install -v . --no-cache-dir --no-build-isolation 
 
 # Clone and install mamba repository
-RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
-RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
+#RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
+#RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
 
 
 RUN python3 -m pip install \
