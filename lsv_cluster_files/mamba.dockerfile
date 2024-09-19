@@ -88,6 +88,13 @@ RUN pip3 install mamba-ssm --no-build-isolation
 RUN pip3 install mamba-ssm[causal-conv1d] --no-cache-dir --no-build-isolation
 RUN pip3 install mamba-ssm[dev] --no-build-isolation
 
+RUN pip install --no-cache-dir \
+    triton==2.2.0 \
+    causal_conv1d \
+    tqdm \
+    torch torchvision torchaudio \
+    einops
+
 # Create a new user with specified USER_UID and USER_NAME
 ARG USER_UID
 ARG USER_NAME
