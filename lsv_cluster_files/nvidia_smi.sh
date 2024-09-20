@@ -1,1 +1,1 @@
-python /nethome/hhwang/hhwang/shiawaseda/python_v.py
+python python -V
