@@ -45,7 +45,7 @@ RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 
 # Install specific versions of PyTorch and CUDA that are compatible with mamba-ssm
 # This might overright Cuda
-RUN pip3 install torch==2.4.0 
+#RUN pip3 install torch==2.4.0 
 #RUN pip3 install "numpy<2.0" 
 # Optionally install development dependencies if needed
 # RUN pip3 install mamba-ssm[dev] --no-cache-dir --no-build-isolation
@@ -57,8 +57,8 @@ RUN python3 -m pip install packaging
 #RUN cd /opt/causal-conv1d && pip3 install -v . --no-cache-dir --no-build-isolation 
 
 # Clone and install mamba repository
-RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
-RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
+#RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
+#RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
 
 RUN python3 -m pip install \
     accelerate \
@@ -75,7 +75,7 @@ RUN python3 -m pip install \
 
 RUN pip install --no-cache-dir \
     triton==2.2.0 \
-    causal_conv1d \
+    #causal_conv1d \
     tqdm \
     torch torchvision torchaudio \
     einops
@@ -85,9 +85,9 @@ RUN pip install --no-cache-dir \
 #RUN pip3 uninstall mamba-ssm -y
 #RUN pip3 install mamba-ssm --no-cache-dir
 # Install mamba-ssm with its dependencies
-RUN pip3 install mamba-ssm --no-build-isolation
+#RUN pip3 install mamba-ssm --no-build-isolation
 RUN pip3 install mamba-ssm[causal-conv1d] --no-cache-dir --no-build-isolation
-RUN pip3 install mamba-ssm[dev] --no-build-isolation
+#RUN pip3 install mamba-ssm[dev] --no-build-isolation
 
 
 # Create a new user with specified USER_UID and USER_NAME
