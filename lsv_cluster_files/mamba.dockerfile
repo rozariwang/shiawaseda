@@ -45,8 +45,8 @@ RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
 
 # Install specific versions of PyTorch and CUDA that are compatible with mamba-ssm
 # This might overright Cuda
-RUN pip3 install torch==2.2.0 
-RUN pip3 install "numpy<2.0" 
+RUN pip3 install torch==2.4.0 
+#RUN pip3 install "numpy<2.0" 
 # Optionally install development dependencies if needed
 # RUN pip3 install mamba-ssm[dev] --no-cache-dir --no-build-isolation
 
