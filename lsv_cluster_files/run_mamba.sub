@@ -11,7 +11,8 @@ log                     = /data/users/hhwang/logs/log_$(ClusterId).$(Year)_$(Mon
 request_CPUs            = 1
 request_memory          = 40G
 request_GPUs            = 1
-requirements            = (GPUs_GlobalMemoryMb >= 40000) && (machine == "cl18lx.lsv.uni-saarland.de")
+#requirements            = (GPUs_GlobalMemoryMb >= 40000) && (machine == "cl18lx.lsv.uni-saarland.de")
+requirements            = (GPUs_GlobalMemoryMb >= 40000)
 #+JobFlavour             = "workday"
 #+MaxRuntime             = 864000
 queue 1
