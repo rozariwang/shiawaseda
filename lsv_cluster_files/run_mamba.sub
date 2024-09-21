@@ -12,7 +12,7 @@ request_CPUs            = 1
 request_memory          = 10G
 request_GPUs            = 1
 #requirements            = (GPUs_GlobalMemoryMb >= 40000) && (machine == "cl18lx.lsv.uni-saarland.de")
-requirements            = (GPUs_GlobalMemoryMb >= 1000) && (machine == "cl18lx.lsv.uni-saarland.de")
+requirements            = (GPUs_GlobalMemoryMb >= 40000) && (machine == "cl18lx.lsv.uni-saarland.de")
 #+JobFlavour             = "workday"
 #+MaxRuntime             = 864000
 queue 1
