@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install -y \
 RUN nvcc --version || echo "nvcc not found"
 RUN ldconfig -p | grep cuda || echo "CUDA libraries not found"
 RUN nvidia-smi || echo "nvidia-smi not found"
+RUN python3 --version
 
 # Upgrade pip and install setuptools and wheel
 RUN pip3 install --upgrade pip setuptools wheel

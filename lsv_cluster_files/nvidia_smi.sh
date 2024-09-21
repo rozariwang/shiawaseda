@@ -1,1 +1,1 @@
-python python -V
+python3 --version
