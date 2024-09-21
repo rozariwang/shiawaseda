@@ -4,11 +4,10 @@ python3 --version
 
 # Check for selective_scan_cuda
 echo "Checking for selective_scan_cuda..."
-SELECTIVE_SCAN_PATH=$(find /usr/local/cuda/ -name "*selective_scan_cuda*" 2>/dev/null)
+find /usr/local/cuda/ -name "*selective_scan_cuda*" 2>/dev/null
 
-if [ -n "$SELECTIVE_SCAN_PATH" ]; then
-    echo "selective_scan_cuda found at:"
-    echo "$SELECTIVE_SCAN_PATH"
+if [ $? -eq 0 ]; then
+    echo "selective_scan_cuda found."
 else
     echo "selective_scan_cuda not found."
 fi
