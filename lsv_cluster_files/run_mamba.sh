@@ -1,6 +1,5 @@
 nvcc --version || echo "nvcc not found"
 ldconfig -p | grep cuda || echo "CUDA libraries not found"
-nvidia-smi || echo "nvidia-smi not found"
 python3 --version
 
 # Check for selective_scan_cuda
