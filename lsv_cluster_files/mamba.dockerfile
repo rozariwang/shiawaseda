@@ -60,14 +60,16 @@ RUN python3 -m pip install --no-cache-dir \
     setuptools==69.5.1 \
     torch \
     triton==2.2.0 \
-    ninja
+    ninja \
+    causal-conv1d >= 1.4.0 \
+    mamba-ssm
 
 # Uninstall and Reinstall mamba-ssm with no cache
 #RUN pip3 uninstall mamba-ssm -y
 #RUN pip3 install mamba-ssm --no-cache-dir
 # Install mamba-ssm with its dependencies
 #RUN pip3 install mamba-ssm --no-build-isolation
-RUN pip3 install mamba-ssm[causal-conv1d] --no-cache-dir --no-build-isolation
+#RUN pip3 install mamba-ssm --no-cache-dir 
 #RUN pip3 install mamba-ssm[dev] --no-build-isolation
 
 # Create a new user with specified USER_UID and USER_NAME
