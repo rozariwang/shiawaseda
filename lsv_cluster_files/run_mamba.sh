@@ -12,4 +12,4 @@ else
     echo "selective_scan_cuda not found."
 fi
 
-python3 /nethome/hhwang/hhwang/shiawaseda/M2_BPE_full_data.py
+python3 /nethome/hhwang/hhwang/shiawaseda/torch.py
