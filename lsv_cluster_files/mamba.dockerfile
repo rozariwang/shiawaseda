@@ -60,7 +60,7 @@ RUN python3 -m pip install 'numpy<2' --no-cache-dir
 RUN python3 -m pip install transformers --no-cache-dir
 
 RUN python3 -m pip install setuptools==69.5.1 --no-cache-dir 
-RUN python3 -m pip install torch torchvision torchaudio --no-cache-dir 
+RUN python3 -m pip install torch==2.4 --no-cache-dir 
 #RUN python3 -m pip install causal-conv1d --no-cache-dir 
 #RUN python3 -m pip install mamba-ssm --no-cache-dir 
 
