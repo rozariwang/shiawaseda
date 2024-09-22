@@ -44,9 +44,10 @@ RUN python3 --version
 # Clone and install mamba repository
 #RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 #RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
-RUN python3 -m pip install packaging 
+
 
 RUN python3 -m pip install --no-cache-dir \
+    packaging \
     accelerate \
     wandb \
     optuna \
@@ -57,12 +58,13 @@ RUN python3 -m pip install --no-cache-dir \
     matplotlib \
     rdkit-pypi \
     datasets \
-    setuptools==69.5.1 \
-    torch \
     triton==2.2.0 \
-    ninja \
-    causal-conv1d >= 1.4.0 \
-    mamba-ssm
+    ninja 
+
+RUN python3 -m pip install setuptools==69.5.1 --no-cache-dir 
+RUN python3 -m pip install torch --no-cache-dir 
+RUN python3 -m pip install causal-conv1d >= 1.4.0 --no-cache-dir 
+RUN python3 -m pip install mamba-ssm --no-cache-dir 
 
 # Uninstall and Reinstall mamba-ssm with no cache
 #RUN pip3 uninstall mamba-ssm -y
