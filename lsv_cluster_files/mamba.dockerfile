@@ -53,7 +53,6 @@ RUN python3 -m pip install --no-cache-dir \
     optuna \
     pandas \
     scikit-learn \
-    transformers \
     plotly \
     matplotlib \
     rdkit-pypi \
@@ -63,6 +62,7 @@ RUN python3 -m pip install --no-cache-dir \
     #ninja 
 
 RUN python3 -m pip install 'numpy<2' --no-cache-dir
+RUN python3 -m pip install transformers --no-cache-dir
 
 RUN python3 -m pip install setuptools==69.5.1 --no-cache-dir 
 RUN python3 -m pip install torch --no-cache-dir 
