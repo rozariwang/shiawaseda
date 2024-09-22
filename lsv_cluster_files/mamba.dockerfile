@@ -63,8 +63,14 @@ RUN python3 -m pip install --no-cache-dir \
 
 RUN python3 -m pip install setuptools==69.5.1 --no-cache-dir 
 RUN python3 -m pip install torch --no-cache-dir 
-RUN python3 -m pip install causal-conv1d >= 1.4.0 --no-cache-dir 
-RUN python3 -m pip install mamba-ssm --no-cache-dir 
+#RUN python3 -m pip install causal-conv1d --no-cache-dir 
+#RUN python3 -m pip install mamba-ssm --no-cache-dir 
+
+RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
+RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
+
+RUN git clone https://github.com/Dao-AILab/causal-conv1d.git /opt/causal-conv1d
+RUN cd /opt/causal-conv1d && pip3 install -v . --no-cache-dir --no-build-isolation 
 
 # Uninstall and Reinstall mamba-ssm with no cache
 #RUN pip3 uninstall mamba-ssm -y
