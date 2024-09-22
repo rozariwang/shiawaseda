@@ -44,9 +44,9 @@ RUN python3 --version
 # Clone and install mamba repository
 #RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 #RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
+RUN python3 -m pip install packaging 
 
 RUN python3 -m pip install --no-cache-dir \
-    packaging \
     accelerate \
     wandb \
     optuna \
