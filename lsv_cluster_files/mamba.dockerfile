@@ -27,10 +27,6 @@ RUN apt-get update && apt-get install -y \
     python3.10-venv \
     python3-pip \
     python3-wheel \
-    cuda-command-line-tools-12-1 \
-    cuda-cudart-dev-12-1 \
-    cuda-cudart-12-1 \
-    nvidia-utils-450 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN nvcc --version || echo "nvcc not found"
@@ -44,7 +40,6 @@ RUN python3 --version
 # Clone and install mamba repository
 #RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 #RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
-
 
 RUN python3 -m pip install --no-cache-dir \
     packaging \
