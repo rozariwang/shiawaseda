@@ -38,29 +38,15 @@ RUN ldconfig -p | grep cuda || echo "CUDA libraries not found"
 RUN nvidia-smi || echo "nvidia-smi not found"
 RUN python3 --version
 
-# Upgrade pip and install setuptools and wheel
-RUN pip3 install --upgrade pip setuptools wheel
-
-RUN python3 -m pip install --upgrade pip "setuptools==69.5.1"
-
-# Install specific versions of PyTorch and CUDA that are compatible with mamba-ssm
-# This might overright Cuda
-#RUN pip3 install torch==2.4.0 
-#RUN pip3 install "numpy<2.0" 
-# Optionally install development dependencies if needed
-# RUN pip3 install mamba-ssm[dev] --no-cache-dir --no-build-isolation
-
 #RUN git clone https://github.com/Dao-AILab/causal-conv1d.git /opt/causal-conv1d
-
-RUN python3 -m pip install packaging
-
 #RUN cd /opt/causal-conv1d && pip3 install -v . --no-cache-dir --no-build-isolation 
 
 # Clone and install mamba repository
 #RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 #RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
 
-RUN python3 -m pip install \
+RUN python3 -m pip install --no-cache-dir \
+    packaging \
     accelerate \
     wandb \
     optuna \
@@ -71,15 +57,10 @@ RUN python3 -m pip install \
     matplotlib \
     rdkit-pypi \
     datasets \
-    ninja
-
-RUN pip install --no-cache-dir \
+    setuptools==69.5.1 \
+    torch \
     triton==2.2.0 \
-    #causal_conv1d \
-    tqdm \
-    torch torchvision torchaudio \
-    einops
-
+    ninja
 
 # Uninstall and Reinstall mamba-ssm with no cache
 #RUN pip3 uninstall mamba-ssm -y
@@ -88,7 +69,6 @@ RUN pip install --no-cache-dir \
 #RUN pip3 install mamba-ssm --no-build-isolation
 RUN pip3 install mamba-ssm[causal-conv1d] --no-cache-dir --no-build-isolation
 #RUN pip3 install mamba-ssm[dev] --no-build-isolation
-
 
 # Create a new user with specified USER_UID and USER_NAME
 ARG USER_UID
