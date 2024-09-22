@@ -38,6 +38,9 @@ import json
 import logging
 import struct
 
+
+print('CUDA available:', torch.cuda.is_available())
+
 ### Data Loading and Preprocessing ###
 class SMILESDataset(Dataset):
     def __init__(self, file_path, tokenizer, max_length=512):
