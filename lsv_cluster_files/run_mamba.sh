@@ -12,4 +12,4 @@ else
     echo "selective_scan_cuda not found."
 fi
 
-python3 /nethome/hhwang/hhwang/shiawaseda/torch.py
+python3 /nethome/hhwang/hhwang/shiawaseda/test_torch.py
