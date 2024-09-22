@@ -59,12 +59,17 @@ RUN python3 -m pip install --no-cache-dir \
     rdkit-pypi \
     datasets \
     triton==2.2.0 \
-    ninja 
+    einops
+    #ninja 
 
 RUN python3 -m pip install setuptools==69.5.1 --no-cache-dir 
 RUN python3 -m pip install torch --no-cache-dir 
 #RUN python3 -m pip install causal-conv1d --no-cache-dir 
 #RUN python3 -m pip install mamba-ssm --no-cache-dir 
+
+RUN python3 -c "import torch; print('PyTorch version:', torch.__version__); print('CUDA available:', torch.cuda.is_available()); print('CUDA version:', torch.version.cuda if torch.cuda.is_available() else 'No CUDA'); print('GPU count:', torch.cuda.device_count() if torch.cuda.is_available() else 'N/A'); print('GPU name:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'N/A')"
+
+RUN python3 -m pip install 'numpy<2' --no-cache-dir
 
 RUN git clone https://github.com/state-spaces/mamba.git /opt/mamba
 RUN cd /opt/mamba && pip3 install . --no-cache-dir --no-build-isolation
