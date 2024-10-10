@@ -1,1 +1,1 @@
-python3 /nethome/hhwang/hhwang/shiawaseda/hp_search_bpe.py
+python3 /nethome/hhwang/hhwang/shiawaseda/hp_search_char.py
