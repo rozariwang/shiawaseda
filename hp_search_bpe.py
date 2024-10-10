@@ -194,9 +194,9 @@ for _ in range(num_search_iters):
         ssm_cfg={'layer': 'Mamba2'},
         attn_layer_idx=[],
         attn_cfg={},
-        rms_norm=False,
-        residual_in_fp32=False,
-        fused_add_norm=False
+        rms_norm=True,
+        residual_in_fp32=True,
+        fused_add_norm=True
     )
     model = MambaLMHeadModel(config).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
@@ -220,7 +220,7 @@ for _ in range(num_search_iters):
 
 # Save results to DataFrame and then to CSV file
 results_df = pd.DataFrame(results)
-results_df.to_csv('random_search_results.csv', index=False)
+results_df.to_csv('./random_search_results.csv', index=False)
 print("Random search complete. Results saved to 'random_search_results.csv'.")
 
 # Output the DataFrame to review here as well

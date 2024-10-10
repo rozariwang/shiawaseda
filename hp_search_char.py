@@ -165,7 +165,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 train_data_file = "./hhwang/shiawaseda/Datasets/train.txt"
 val_data_file = "./hhwang/shiawaseda/Datasets/val.txt"
 
-tokenizer = CharLevelTokenizer(vocab_file="/content/vocab.json")
+tokenizer = CharLevelTokenizer(vocab_file="./hhwang/shiawaseda/Datasets/vocab.json")
 
 # Load the datasets
 total_train_dataset = SMILESDataset(train_data_file, tokenizer, max_length=512)
@@ -219,13 +219,13 @@ for _ in range(num_search_iters):
         d_model=d_model,
         n_layer=n_layer,
         d_intermediate=d_model * 4,
-        vocab_size=7924,  # change according to tokenizer
+        vocab_size=48,  # change according to tokenizer
         ssm_cfg={'layer': 'Mamba2'},
         attn_layer_idx=[],
         attn_cfg={},
-        rms_norm=False,
-        residual_in_fp32=False,
-        fused_add_norm=False
+        rms_norm=True,
+        residual_in_fp32=True,
+        fused_add_norm=True
     )
     model = MambaLMHeadModel(config).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
@@ -249,7 +249,7 @@ for _ in range(num_search_iters):
 
 # Save results to DataFrame and then to CSV file
 results_df = pd.DataFrame(results)
-results_df.to_csv('random_search_results.csv', index=False)
+results_df.to_csv('./random_search_results.csv', index=False)
 print("Random search complete. Results saved to 'random_search_results.csv'.")
 
 # Output the DataFrame to review here as well
