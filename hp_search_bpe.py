@@ -133,8 +133,8 @@ def train(model, train_loader, val_loader, optimizer, criterion, device, num_epo
         
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-train_data_file = "./hhwang/shiawaseda/Datasets/train.txt"
-val_data_file = "./hhwang/shiawaseda/Datasets/val.txt"
+train_data_file = "./hhwang/shiawaseda/Datasets/train_80.txt"
+val_data_file = "./hhwang/shiawaseda/Datasets/val_10.txt"
 
 tokenizer = AutoTokenizer.from_pretrained("seyonec/PubChem10M_SMILES_BPE_450k")
 
