@@ -8,7 +8,7 @@ from torch.nn.utils.rnn import pad_sequence
 import torch.optim as optim
 from torch.nn import CrossEntropyLoss
 import time
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, PreTrainedTokenizer
 
 # Mamba and Tokenizer 
 from tqdm import tqdm
@@ -18,6 +18,7 @@ from mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel
 from transformers import AutoTokenizer
 import pandas as pd
 import random
+import json
 
 
 # Data Loading and Preprocessing
@@ -129,14 +130,42 @@ def train(model, train_loader, val_loader, optimizer, criterion, device, num_epo
         print(f"Epoch {epoch + 1}/{num_epochs}")
         print(f"Train Loss: {avg_train_loss:.4f}, Train Perplexity: {train_perplexity:.4f}")
         print(f"Validation Loss: {avg_val_loss:.4f}, Validation Perplexity: {val_perplexity:.4f}")
-        
+
+# Character-Level Tokenizer
+class CharLevelTokenizer(PreTrainedTokenizer):
+    def __init__(self, vocab_file):
+        with open(vocab_file, 'r') as f:
+            self.vocab = json.load(f)
+        self.ids_to_tokens = {id: token for token, id in self.vocab.items()}
+
+    def tokenize(self, text):
+        return list(text)  # Tokenize the text into a list of characters
+
+    def convert_tokens_to_ids(self, tokens):
+        return [self.vocab.get(token, self.vocab['[UNK]']) for token in tokens]  # Map tokens to their IDs
+
+    def encode(self, text, add_special_tokens=True, max_length=None, truncation=False):
+        tokens = self.tokenize(text)
+        token_ids = self.convert_tokens_to_ids(tokens)
+        if add_special_tokens:
+            token_ids = [self.vocab.get('[CLS]')] + token_ids + [self.vocab.get('[SEP]')]
+        if truncation and max_length:
+            token_ids = token_ids[:max_length]
+        return token_ids
+
+    def decode(self, token_ids):
+        return ''.join(self.ids_to_tokens.get(id, '[UNK]') for id in token_ids)
+
+    def __len__(self):
+        # Return the total vocabulary size
+        return len(self.vocab)      
         
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 train_data_file = "./hhwang/shiawaseda/Datasets/train.txt"
 val_data_file = "./hhwang/shiawaseda/Datasets/val.txt"
 
-tokenizer = AutoTokenizer.from_pretrained("seyonec/PubChem10M_SMILES_BPE_450k")
+tokenizer = CharLevelTokenizer(vocab_file="/content/vocab.json")
 
 # Load the datasets
 total_train_dataset = SMILESDataset(train_data_file, tokenizer, max_length=512)
