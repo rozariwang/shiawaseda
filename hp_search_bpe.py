@@ -142,11 +142,19 @@ tokenizer = AutoTokenizer.from_pretrained("seyonec/PubChem10M_SMILES_BPE_450k")
 total_train_dataset = SMILESDataset(train_data_file, tokenizer, max_length=512)
 total_val_dataset = SMILESDataset(val_data_file, tokenizer, max_length=512)
 
+print(f"Total training samples: {len(total_train_dataset)}")
+print(f"Total validation samples: {len(total_val_dataset)}")
+
 # Select 5% of the training and validation data randomly
 train_subset_indices = torch.randperm(len(total_train_dataset))[:int(0.05 * len(total_train_dataset))]
+print(f"Train subset size: {len(train_subset_indices)}")
 train_subset_dataset = Subset(total_train_dataset, train_subset_indices)
 val_subset_indices = torch.randperm(len(total_val_dataset))[:int(0.05 * len(total_val_dataset))]
 val_subset_dataset = Subset(total_val_dataset, val_subset_indices)
+
+print(f"Length of train_subset_dataset: {len(train_subset_dataset)}")
+print(f"Length of val_subset_dataset: {len(val_subset_dataset)}")
+
 
 # Create DataLoader 
 train_loader = DataLoader(train_subset_dataset, batch_size=32, shuffle=True, collate_fn=collate_batch)
